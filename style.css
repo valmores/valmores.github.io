@@ -558,31 +558,15 @@ img {
     }
 }
 @media only screen and (max-width: 320px){
-    .page2{
-        background-color: #999999;
-        width: 96%;
-        height: 400px;
-        font-size: 25px;
-        color: white;
-    }
-    .school{
-        background-color: teal;
-        color: white;
-        width: 96%;
-        margin: 20px auto;
-        text-align: center;
-        font-size: 21px;
-        height: 400px;
-    }
-    .intern{
-        background-color: rgba(209, 57, 74, 0.79);
-        color: white;
-        width: 96%;
-        margin: 20px auto;
-        text-align: center;
-        font-size: 21px;
-        height: 400px;
-    }
+    .box{
+	    width: 96%;
+	}
+.title{
+ font-size: 25px;
+}
+.italic{
+	 font-size: 15px;
+	}
     #aboutme{
         width: 150px;
     }
