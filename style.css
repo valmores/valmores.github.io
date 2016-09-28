@@ -510,7 +510,16 @@ img {
 }
 
 @media only screen and (max-width: 768px){
-    #image{
+    .box{
+	    width: 96%;
+	}
+.title{
+ font-size: 25px;
+}
+.italic{
+	 font-size: 15px;
+	}
+	#image{
         width: 320px;
     }
 	.showing{
