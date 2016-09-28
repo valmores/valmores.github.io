@@ -510,7 +510,11 @@ img {
 }
 
 @media only screen and (max-width: 768px){
-    .box{
+    #aboutme{
+	    margin: 30px 0 30px 0;
+        width: 150px;
+    }
+	.box{
 	    width: 96%;
 	}
 .title{
