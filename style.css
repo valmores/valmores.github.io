@@ -1,0 +1,756 @@
+.ubos{
+	position: relative;
+	//width: 100%;
+	height: 0px;
+	background-color: gray;
+    margin: 0 0;
+	
+}
+.sayings{
+	//box-shadow: 0px 0px 7px #999999;
+	//background-color: white;
+	margin: auto;
+	width: 750px;
+	
+}
+.sudlanan{
+    height: 92vh;
+    margin: 0  auto;
+	width: 100%;
+    background-image: url(computer.jpg);
+    background-size: cover;
+    //background-color: black;
+}
+body{
+    display: block;
+    height: 100%;
+   //background-color: green;
+}
+.tabcontent{
+    position: relative;
+    //background-color: blue;
+}
+html{
+    display: block;
+    //background-color: red;
+    height: 100%;
+	overflow-y: scroll;
+}
+#picture{
+	position: absolute;
+	top: 3.5px;
+	left: 25px;
+	border-radius: 50%;
+	width: 45px;
+	/*//box-shadow:5px 3px 7px #999999;
+	position: absolute;
+	top: 35px;
+	left: 50px;
+	width: 50px;
+	height: 50px;*/
+}
+#image{
+    overflow-y: hidden
+	margin: auto;
+	width: 100%;
+}
+
+
+#name {
+	font-family: Varela Round;
+	font-weight: bold;
+	color: white;
+	position: absolute;
+	top: 14px;
+	left: 90px;
+	display: block;
+	text-align: center;
+	font-size: 16px;
+	/*display: none;
+	box-shadow: 5px 3px 7px #999999;
+	border-radius: 4px;
+	background-color: #de5565;
+	padding: 7px 10px 7px 10px;
+	//display:inline-block;
+	//float:left;
+	//text-shadow: 2px 2px 8px #333333;
+	position: absolute;
+	top: 28px;
+	left: 110px;
+	font-family: Varela Round;
+	font-size: 17px;
+	color: white;
+	font-weight: bold;*/
+	
+}
+
+#course {
+	text-align: center;
+	/*display: none;
+	font-weight: bold;
+	font-family: Varela Round;
+	display:inline-block;
+	float: left;
+	//text-shadow: 2px 2px 8px #333333;
+	position: absolute;
+	top: 450px;
+	left: 725px;
+	font-size: 50px;
+	color: gray;
+	z-index: 2;*/
+}
+.tab{
+	box-shadow:0px 2px 10px #999999;
+	list-style-type: none;
+    margin:0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #009688;
+	opacity: initial;
+}
+.list1{
+	float: right;
+}
+.tab li a{
+	border-radius: 5px;
+	font-weight:bold;
+	font-family: varela round;
+	display: block;
+    color: white;
+    text-align: center;
+    padding: 16px 30px;
+    text-decoration: none;
+	transition: 0.5s;
+}
+.tab li a:hover{
+	background-color: #999999;
+}
+.active{
+	background-color: gray;
+}
+/* Style the list */
+/*ul.tab {
+	font-family: varela round;
+    list-style-type: none;
+    margin-top: 30px;
+	margin-left: 60%;
+    //overflow: hidden;
+    //border: 1px solid #ccc;
+    background-color: #ffffff;
+}
+
+/* Float the list items side by side */
+/*ul.tab li {
+	color: #48cfad;
+	margin-left: 1%;
+	margin-right: 1%;
+	float: left;
+	border: 3px solid #48cfad;
+	border-radius: 6px;
+	}
+
+/* Style the links inside the list items */
+/*ul.tab li a {
+	font-weight: bold;
+	font-family: Varela Round;
+    display: inline-block;
+    color: #48cfad;
+    text-align: center;
+    padding: 15px 30px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of links on hover */
+/*ul.tab li a:hover {
+	box-shadow: 0px 0px 15px #48cfad;
+	font-size: 17px;
+	font-weight: bold;
+	font-family: Varela Round;
+	background-color: white;
+	transition:0.3s;
+	}
+
+/* Create an active/current tablink class */
+/*ul.tab li a.active{
+	transition: 0.5s;
+	box-shadow:5px 3px 10px #999999;
+	font-size: 17px;
+	font-weight: bold;
+	font-family: Varela Round;
+	background-color: #48cfad;
+	color:white;
+	}
+*/
+/* Style the tab content */
+.tabcontent{
+	display: none;
+	font-family: Varela Round;
+	font-weight: 600;
+	color: gray;
+}
+/*.tablinks {
+	padding: 6px 6px;
+	font-family: Varela Round;
+	font-weight: bold;
+	color: white;
+}*/
+nav{
+   display: none;
+    cursor: pointer;
+    margin-bottom: -30px;
+}
+.navbar{
+    //display: none;
+    background-color: #009688; 
+}
+ul.nav li a{
+    color: white;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+ul.nav li a:hover{
+    background-color: #999999;
+}
+button{
+    margin: 0;
+    background-color: white;
+}
+#info{
+    
+	text-align:center;
+	font-weight: bolder;
+	
+	
+}
+
+.italic{
+    position: relative;
+    font-style: italic;
+    font-size: 25px;
+    margin-bottom: 50px;
+}
+.title{
+    font-size: 40px;    
+}
+.box{
+        color: white;
+        width: 50%;
+        margin: 40px auto;
+        text-align: center;
+        height: 480px;
+        border-radius: 20px;
+        box-shadow: 0 25px 40px -20px rgba(0,0,0,1);
+}
+.glyphicon {
+    font-size: 100px;
+}
+#me{
+         background-color: rgba(57, 168, 209, 0.81);
+       
+    } 
+#grad{
+        background-color: teal;
+        
+    }
+#degree{
+       
+        background-color: rgb(184, 142, 242);
+}
+#intern{
+        background-color: rgba(209, 57, 74, 0.79);
+        
+    }
+#skill{
+    background-color: rgb(252, 215, 115);
+}
+
+#aboutme{
+	margin-top: 0px;
+	margin-bottom: 20px;
+	position: relative;
+	width:200px;
+	
+}
+#quotes{
+	color: #009688;
+	font-family: Indie Flower;
+	position: relative;
+	font-size: 40px;
+	text-align: center;
+}
+#author{
+    text-align: center;
+	font-family: Varela Round;
+	position: relative;
+	font-size: 17px;
+	color: gray;
+}
+#portfolio{
+	color: #009688;
+	width: 400px; 
+	position: absolute;
+	left: 100px;
+	top:100px; 
+}
+
+.pi{
+	list-style: none;
+	float:left;
+	margin: 15px;
+}
+.portfolio{
+	height: 1000px;
+	width: 600px;
+	margin-top: 80px;
+	margin-left: 80px;
+	//background-color: blue;
+}
+th{
+	
+}
+#personalcontent{
+	position : absolute;
+	left: 350px;
+	top:135px;
+}
+#semicolon{
+	position : absolute;
+	left: 270px;
+	top:135px;
+}
+#educ{
+	position: absolute;
+	left: 400px;
+	top: 300px;
+}
+
+#skillsContent{
+	list-style-type: disc;
+	position: absolute;
+	left: 100px;
+	top: 450px;
+}
+.skillsContent2{
+	list-style-type: circle;
+}
+#WorkExp{
+	color:#009688;
+	position: absolute;
+	top: 780px;
+	left: 100px;
+}
+#company{
+	//border-bottom: 2px solid #48cfad;
+	position: absolute;
+	top:810px;
+	left: 100px;
+}
+#position{
+	position: absolute;
+	top:810px;
+	left: 400px;
+}
+#job{
+	position: absolute;
+	top:810px;
+	left: 600px;
+}
+
+
+#pics{
+	margin: auto;
+	width: 100%;
+	float: right;
+	
+}
+.contactbox{
+    
+    width: 1172px;
+    height: 100%;
+    margin: auto;
+}
+.contactme{
+    width: 87%;
+    font-size: 40px;
+    font-weight: bold;
+	text-align: center;
+	position: relative;
+	margin: 30px auto;
+	color: rgba(247, 125, 125, 0.96);
+}
+.boxes{
+    color: #6a6a6a;
+    display: inline-block;
+    position: relative;
+    width: 270px;
+    height: 300px;
+    margin: 30px 10px;
+    border-radius: 20px;
+    box-shadow: 0 25px 40px -20px rgba(0,0,0,1);
+    background-color: #f0f0f0;
+}
+.linkheader{
+    position: relative;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 25px;
+}
+#header1{
+    color: #de5565;
+}
+#header2{
+    color: #57abb5;
+}
+#header3{
+    color: #728ff0;
+}
+#header4{
+    color: #e25f5f;
+}
+#facebook{
+    position: relative;
+	color: #3bafda;
+}
+#googleplus{
+	color: #de5565;
+}
+.link{
+    border: solid;
+    border-radius: 5px ;
+    padding: 10px 5px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+}
+.icon{
+	position: relative;
+	width: 130px;
+    margin: auto;
+    display: block;
+}
+.message{
+    width: 80%;
+    margin: 100px auto;
+    font-size: 40px;
+    text-align: center;
+    color: #5d9cec;
+}
+.messagebox{
+    border-radius: 5px;
+    background-color: #e2e2e2;
+    margin: 100px auto;
+    width: 700px;
+    height: 700px;
+    box-shadow: 0 25px 40px -20px rgba(0,0,0,1);
+}
+form{
+    
+    position: relative;
+    margin: auto;
+    width: 500px;
+    height: auto;
+}
+input{
+    text-align: center;
+    width: 80%;
+    height: 35px;
+    background-color: #c6c6c6;
+    border-radius: 3px;
+    font-weight: normal;
+}
+.send{
+    padding: 12px 40px;
+    border-radius: 5px;
+    background-color: #5d9cec;
+    color: white;
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+        box-shadow: : 0 25px 40px -20px rgba(0,0,0,1);
+     background-color: #74b1fd;
+    color: white;
+    transition: 0.5s;
+     text-decoration: none;
+}
+textarea{
+    width: 80%;
+    background-color: #c6c6c6;
+    border-radius: 3px;
+    font-weight: normal;
+}
+h2{
+    width: 90%;
+    text-align: center;
+}
+#mobile{
+	position: relative;
+	width: 35px;
+}
+#fbIcon{
+	position:relative;
+	
+	width:30px;
+}
+#google{
+    background-color: #5d9cec;
+}
+
+
+
+
+#Educational{
+	color: #009688;
+	position: absolute;
+	top:900px;
+	left: 100px;
+}
+#level{
+	position: absolute;
+	top:950px;
+	left: 100px;
+}
+#school{
+	position: absolute;
+	top:950px;
+	left: 300px;
+}
+#seminars{
+	color: #009688;
+	position: absolute;
+	top:1075px;
+	left: 100px;
+}
+
+#seminarContent{
+	position: absolute;
+	top:1120px;
+	left: 100px;
+}
+#footer1{
+    position: relative;
+    color: #48cfad;
+    line-height: 30px;
+    text-align: center;
+    
+}
+#footer2{
+	font-weight: normal;
+	color: #48cfad;
+	text-align: center;
+	margin-bottom: 2px;
+	background-color: gray;
+	position: absolute;
+	padding: 10px 46%;
+	top: 1350px;
+	left:4px;
+}
+#footer3{
+	position: relative;
+	text-align: center;
+	color: #48cfad;
+    line-height: 30px;
+}
+
+img {
+    border-radius: 5px 5px 0 0;
+}
+#downloadDoc{
+	text-align: center;
+	border: 3px solid #5d9cec;
+	padding: 10px 18px 10px 18px;
+	border-radius: 5px;
+	color: #5d9cec;
+	text-decoration: none;
+	position: absolute;
+	top: 600px;
+	left: 800px;
+	transition: 0.5s;
+}
+#downloadPdf{
+	transition:0.5s;
+	text-align: center;
+	border: 3px solid #de5565;
+	padding: 10px 20px 10px 20px;
+	border-radius: 5px;
+	color: #de5565;
+	text-decoration: none;
+	position: absolute;
+	top: 650px;
+	left: 800px;
+}
+#downloadDoc:hover{
+	box-shadow:5px 3px 10px #999999;
+	transition: 0.5s;
+	//box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+	background-color: #5d9cec;
+	color: white;
+}
+#downloadPdf:hover{
+	box-shadow:5px 3px 10px #999999;
+	transition: 0.5s;
+	//box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+	background-color: #de5565;
+	color: white;
+}
+#ojt{
+	position: absolute;
+	top: 848px;
+	left: 570px;
+}
+#resume{
+	width: 20.7%;
+	box-shadow:5px 3px 10px #999999;
+	position: absolute;
+	top: 200px;
+	left: 800px;
+	//border: 3px solid #48cfad;
+	border-radius: 5px;
+}
+footer{
+    display: none;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    background-color: gray;
+    color: black;
+}
+@media only screen and (max-width: 1172px){
+    .contactbox{
+        width: 100%;
+        
+    }
+    .boxes{
+        display: block;
+        float: none;
+        width: 500px;
+        margin: 50px auto;
+        align-content: center;
+    }
+    .messagebox{
+        width: 450px;
+    }
+    form{
+        width: 350px;
+    }
+}
+@media only screen and (max-width: 768px){  /* viewport 768*/
+    form{
+        width: 80%;
+    }
+    .messagebox{
+        width: 80%;
+    }
+    .boxes{
+        margin: 80px auto;
+    }
+    #image{
+        width: 320px;
+    }
+	.showing{
+		max-height: 200px;
+	}
+	#prof{
+	display: none;
+	}
+	.container{
+		display:block;
+	}
+	#name{
+		color: #009688;
+	}
+	.sayings{
+	width: 90%;
+	//background-color: gray;
+	position: relative;
+	top: 70px;
+	}
+	.tab{
+		display: none;
+	}
+	.tab li a{
+		
+		display: none;
+	}
+	
+	.tabcontent{
+		font-size: 13px;
+	}
+	#quotes{
+		font-size: 30px;
+	}
+	.sudlanan{
+		position: relative;
+		top: 0px;
+		width: 100%;
+	}
+	#author{
+		font-size: 15px;
+	}
+    .navbar{
+        display: block;
+    }
+    .box{
+        width: 96%;
+    }
+    .italic{
+        font-size: 20px;
+    }
+    .title{
+        font-size: 30px;
+    }
+    #aboutme{
+        margin: 30px 0 30px 0;
+        width: 150px;
+    }
+    #pics{
+        margin: auto;
+        float: none;
+        width: 250px;
+    }
+
+}
+@media only screen and (max-width: 580px){
+    .contactbox{
+        width: 90%;
+    }
+    .box{
+        width: 96%;
+    }
+    .boxes{
+        width: 100%;
+    }
+    .italic{
+        font-size: 15px;
+    }
+    .title{
+        font-size: 25px;
+    }
+    #aboutme{
+        width: 150px;
+    }
+    #image{
+        width: 100%;
+    }
+    .tabcontent{
+        width: 100%;
+        margin: auto;
+    }
+    #image{
+		position: relative;
+		top: 0px;
+		margin: auto;
+		width: 300px;	
+    }
+	#author{
+		position:relative;
+		font-size: 13px;
+        text-align: center;
+	}
+    .navbar{
+        display: block;
+    }
+}
