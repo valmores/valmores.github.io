@@ -13,6 +13,7 @@ import {
   Divider,
   Stack,
   Link as MuiLink,
+  keyframes,
 } from '@mui/material';
 import {
   Email,
@@ -22,6 +23,9 @@ import {
   Twitter,
 } from '@mui/icons-material';
 import Grid from '@mui/material/Grid';
+import SampleWorkCard from './components/SampleWorkCard';
+import { useSampleWork } from './store/useSampleWork';
+import SampleWorkModal from './components/modals/SampleWorkModal';
 /* ───────────────────── DATA ───────────────────── */
 
 interface NavLink {
@@ -74,9 +78,22 @@ const projects: Project[] = [
   },
 ];
 
+/* ───────────────────── ANIMATIONS ───────────────────── */
+
+const spin = keyframes`
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+`;
+
+const spinReverse = keyframes`
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+`;
+
 /* ───────────────────── PAGE ───────────────────── */
 
 export default function Home() {
+  const { open, setOpen } = useSampleWork();
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -147,9 +164,41 @@ export default function Home() {
           <Grid container spacing={8} alignItems="center">
             {/* Left: Profile Image with Glow */}
             <Grid size={{ xs: 12, md: 5 }} sx={{ display: 'flex', justifyContent: 'center' }}>
-              <Box sx={{ position: 'relative', width: { xs: 280, md: 400 }, height: { xs: 280, md: 400 } }}>
-                {/* Layered Glow Effects */}
+              <Box
+                sx={{
+                  position: 'relative',
+                  width: { xs: 280, md: 400 },
+                  height: { xs: 280, md: 400 },
+                  transition: 'transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)',
+                  '&:hover': {
+                    transform: 'scale(1.02) translateY(-10px)',
+                  },
+                  '&:hover .glow-1': {
+                    animation: `${spin} 12s linear infinite`,
+                    top: '-3%',
+                    left: '-3%',
+                    transform: 'scale(1.1)',
+                    opacity: 0.25,
+                    filter: 'blur(30px)',
+                  },
+                  '&:hover .glow-2': {
+                    animation: `${spinReverse} 10s linear infinite`,
+                    top: '-1.5%',
+                    left: '-1.5%',
+                    transform: 'scale(1.05)',
+                    opacity: 0.3,
+                    filter: 'blur(20px)',
+                  },
+                  '&:hover .profile-avatar': {
+                    border: (theme) => `8px solid ${theme.palette.primary.main}`,
+                    boxShadow: '0 40px 80px rgba(168, 85, 247, 0.4)',
+                    transform: 'scale(1.02)',
+                  }
+                }}
+              >
+                {/* Background Glow 1 */}
                 <Box
+                  className="glow-1"
                   sx={{
                     position: 'absolute',
                     top: '5%',
@@ -160,9 +209,13 @@ export default function Home() {
                     bgcolor: 'primary.main',
                     opacity: 0.1,
                     zIndex: 0,
+                    transition: 'all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1)',
+                    filter: 'blur(20px)',
                   }}
                 />
+                {/* Background Glow 2 */}
                 <Box
+                  className="glow-2"
                   sx={{
                     position: 'absolute',
                     top: '2.5%',
@@ -173,9 +226,13 @@ export default function Home() {
                     bgcolor: 'primary.main',
                     opacity: 0.15,
                     zIndex: 1,
+                    transition: 'all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)',
+                    filter: 'blur(10px)',
                   }}
                 />
+                {/* Profile Avatar */}
                 <Avatar
+                  className="profile-avatar"
                   src="/prof.png"
                   sx={{
                     width: '100%',
@@ -183,7 +240,8 @@ export default function Home() {
                     border: '8px solid #1a1a1a',
                     boxShadow: '0 20px 40px rgba(0,0,0,0.4)',
                     zIndex: 2,
-                    position: 'relative'
+                    position: 'relative',
+                    transition: 'all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1)',
                   }}
                 />
               </Box>
@@ -194,21 +252,21 @@ export default function Home() {
               <Typography
                 variant="h6"
                 className="fade-up"
-                sx={{ 
-                  color: 'text.secondary', 
+                sx={{
+                  color: 'text.secondary',
                   mb: 2,
                   fontSize: '0.9rem',
                   letterSpacing: '0.3em'
                 }}
               >
-                HI THERE! I'M
+                HI THERE! I&apos;M
               </Typography>
               <Typography
                 variant="h1"
                 className="fade-up fade-up-delay-1"
-                sx={{ 
-                  fontSize: { xs: '3rem', md: '4.5rem' }, 
-                  lineHeight: 1.1, 
+                sx={{
+                  fontSize: { xs: '3rem', md: '4.5rem' },
+                  lineHeight: 1.1,
                   mb: 3,
                   fontWeight: 800,
                   display: 'flex',
@@ -225,24 +283,24 @@ export default function Home() {
               <Typography
                 variant="body1"
                 className="fade-up fade-up-delay-2"
-                sx={{ 
-                  color: 'text.secondary', 
-                  maxWidth: 540, 
-                  mb: 6, 
+                sx={{
+                  color: 'text.secondary',
+                  maxWidth: 540,
+                  mb: 6,
                   fontSize: '1.1rem',
                   lineHeight: 1.7
                 }}
               >
-                A <Box component="span" sx={{ color: 'primary.main', fontWeight: 600 }}>Front-End Web Developer</Box> passionate about creating interactive applications and experiences on the web.
+                A <Box component="span" sx={{ color: 'primary.main', fontWeight: 600 }}>Full-Stack Web Developer</Box> passionate about creating interactive applications and experiences on the web.
               </Typography>
-              
+
               <Stack direction="row" spacing={3} alignItems="center" className="fade-up fade-up-delay-3">
-                <Button 
-                  variant="contained" 
-                  color="primary" 
+                <Button
+                  variant="contained"
+                  color="primary"
                   size="large"
-                  sx={{ 
-                    px: 5, 
+                  sx={{
+                    px: 5,
                     py: 1.8,
                     fontSize: '1rem',
                     boxShadow: '0 10px 20px rgba(168, 85, 247, 0.3)'
@@ -250,7 +308,7 @@ export default function Home() {
                 >
                   Resumé
                 </Button>
-                
+
                 <Stack direction="row" spacing={2}>
                   {[
                     { icon: <LinkedIn />, href: '#' },
@@ -294,89 +352,12 @@ export default function Home() {
             Selected Work
           </Typography>
           <Typography variant="h2" sx={{ mb: 8 }}>
-            Things I've Built
+            Things I&apos;ve Built
           </Typography>
-
+          {/* ---------Work Card-------------- */}
           <Grid container spacing={4}>
             {projects.map((project, i) => (
-              <Grid size={{ xs: 12, md: 6 }} key={i}>
-                <Box
-                  sx={{
-                    bgcolor: 'background.paper',
-                    border: '1px solid rgba(255,255,255,0.06)',
-                    p: 4,
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                    '&:hover': {
-                      borderColor: 'primary.main',
-                      transform: 'translateY(-8px)',
-                      boxShadow: '0 20px 40px rgba(0,0,0,0.4)'
-                    },
-                  }}
-                >
-                  <Box
-                    sx={{
-                      width: '100%',
-                      height: 200,
-                      bgcolor: 'rgba(255,255,255,0.03)',
-                      mb: 3,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <Typography variant="body2" sx={{ color: 'text.secondary', fontStyle: 'italic' }}>
-                      screenshot placeholder
-                    </Typography>
-                  </Box>
-
-                  <Box>
-                    <Typography variant="h3" sx={{ mb: 1.5 }}>
-                      {project.title}
-                    </Typography>
-                    <Typography variant="body2" sx={{ color: 'text.secondary', mb: 2.5 }}>
-                      {project.description}
-                    </Typography>
-                    <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap sx={{ mb: 3 }}>
-                      {project.tags.map((tag) => (
-                        <Typography
-                          key={tag}
-                          variant="caption"
-                          sx={{
-                            border: '1px solid rgba(255,255,255,0.12)',
-                            px: 1.5,
-                            py: 0.4,
-                            fontSize: '0.7rem',
-                            letterSpacing: '0.05em',
-                            color: 'text.secondary',
-                          }}
-                        >
-                          {tag}
-                        </Typography>
-                      ))}
-                    </Stack>
-                    <MuiLink
-                      href={project.link}
-                      underline="none"
-                      sx={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: 0.5,
-                        fontSize: '0.82rem',
-                        color: 'text.primary',
-                        letterSpacing: '0.04em',
-                        transition: 'opacity 0.3s',
-                        '&:hover': { opacity: 0.6 },
-                      }}
-                    >
-                      View Project <ArrowOutward sx={{ fontSize: 14 }} />
-                    </MuiLink>
-                  </Box>
-                </Box>
-              </Grid>
+              <SampleWorkCard key={i} project={project} />
             ))}
           </Grid>
         </Container>
@@ -394,12 +375,12 @@ export default function Home() {
             A little about me
           </Typography>
           <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3 }}>
-            I'm a Computer Engineering graduate from Mindanao University of Science
+            I&apos;m a Computer Engineering graduate from Mindanao University of Science
             and Technology (2016). I enjoy building things for the web and continuously
             learning new technologies.
           </Typography>
           <Typography variant="body1" sx={{ color: 'text.secondary' }}>
-            When I'm not coding, you can find me exploring new tools, contributing to
+            When I&apos;m not coding, you can find me exploring new tools, contributing to
             open-source projects, or working on personal experiments.
           </Typography>
         </Container>
@@ -414,7 +395,7 @@ export default function Home() {
             Contact
           </Typography>
           <Typography variant="h2" sx={{ mb: 3 }}>
-            Let's work together
+            Let&apos;s work together
           </Typography>
           <Typography variant="body1" sx={{ color: 'text.secondary', mb: 5, maxWidth: 500 }}>
             Have a project in mind or just want to say hello?
@@ -462,6 +443,7 @@ export default function Home() {
           &copy; {new Date().getFullYear()} John Eric Valmores
         </Typography>
       </Box>
+      <SampleWorkModal />
     </Box>
   );
 }
