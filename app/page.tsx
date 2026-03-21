@@ -26,6 +26,8 @@ import Grid from '@mui/material/Grid';
 import SampleWorkCard from './components/SampleWorkCard';
 import { useSampleWork } from './store/useSampleWork';
 import SampleWorkModal from './components/modals/SampleWorkModal';
+import SocialButton from './components/SocialButton';
+import ExperienceItem from './components/ExperienceItem';
 /* ───────────────────── DATA ───────────────────── */
 
 interface NavLink {
@@ -41,40 +43,51 @@ interface Project {
   image: string | null;
 }
 
+interface Experience {
+  company: string;
+  role: string;
+  period: string;
+  description: string[];
+  skills: string[];
+}
+
 const navLinks: NavLink[] = [
   { label: 'Work', href: '#work' },
+  { label: 'Experience', href: '#experience' },
   { label: 'About', href: '#about' },
   { label: 'Contact', href: '#contact' },
 ];
 
 const projects: Project[] = [
   {
-    title: 'Project One',
+    title: 'CyTech Module',
     description: 'A brief description of what this project does and the technologies used.',
-    tags: ['React', 'Node.js', 'MongoDB'],
+    tags: ['Python Ninja', 'Next.js', 'MUI', 'Postgres'],
     link: '#',
     image: null,
   },
   {
-    title: 'Project Two',
+    title: 'Budget Android',
     description: 'A brief description of what this project does and the technologies used.',
-    tags: ['Next.js', 'Firebase', 'MUI'],
+    tags: ['Flutter', 'Firebase'],
     link: '#',
     image: null,
-  },
+  }
+];
+
+const experiences: Experience[] = [
+
   {
-    title: 'Project Three',
-    description: 'A brief description of what this project does and the technologies used.',
-    tags: ['Flutter', 'Dart', 'Firestore'],
-    link: '#',
-    image: null,
-  },
-  {
-    title: 'Project Four',
-    description: 'A brief description of what this project does and the technologies used.',
-    tags: ['HTML', 'CSS', 'JavaScript'],
-    link: '#',
-    image: null,
+    company: 'Cytech International, Inc.',
+    role: 'Full-Stack Developer',
+    period: 'March 2025 - April 2026',
+    description: [
+      'Designing and developing high-performance web applications using modern frameworks like React and Next.js.',
+      'Building scalable backend services and APIs with Python and cloud-native technologies.',
+      'Focused on delivering exceptional user experiences through intuitive design and performance optimization.',
+      'Continuous learning and experimentation with emerging technologies to stay at the forefront of web development.',
+    ],
+    skills: ['React', 'Next.js', 'Python', 'TypeScript', 'TailwindCSS', 'MongoDB', 'Postgres', 'MUI', 'AWS'],
   },
 ];
 
@@ -313,28 +326,14 @@ export default function Home() {
                   {[
                     { icon: <LinkedIn />, href: '#' },
                     { icon: <GitHub />, href: 'https://github.com/valmores' },
-                    { icon: <Twitter />, href: '#' }, // Assuming Twitter for now
+                    { icon: <Twitter />, href: '#' },
                   ].map((social, i) => (
-                    <IconButton
+                    <SocialButton
                       key={i}
+                      icon={social.icon}
                       href={social.href}
-                      target="_blank"
-                      sx={{
-                        bgcolor: 'background.paper',
-                        color: 'primary.main',
-                        width: 50,
-                        height: 50,
-                        borderRadius: 2,
-                        transition: 'all 0.3s',
-                        '&:hover': {
-                          bgcolor: 'primary.main',
-                          color: 'white',
-                          transform: 'translateY(-4px)'
-                        }
-                      }}
-                    >
-                      {social.icon}
-                    </IconButton>
+                      variant="square"
+                    />
                   ))}
                 </Stack>
               </Stack>
@@ -360,6 +359,25 @@ export default function Home() {
               <SampleWorkCard key={i} project={project} />
             ))}
           </Grid>
+        </Container>
+      </Box>
+
+      <Divider sx={{ mx: 'auto', maxWidth: 'lg' }} />
+
+      {/* ── Experience Section ── */}
+      <Box id="experience" sx={{ py: { xs: 10, md: 14 } }}>
+        <Container maxWidth="md">
+          <Typography variant="h6" sx={{ color: 'text.secondary', mb: 1 }}>
+            Career Journey
+          </Typography>
+          <Typography variant="h2" sx={{ mb: 8 }}>
+            Work Experience
+          </Typography>
+          <Box sx={{ mt: 5 }}>
+            {experiences.map((exp, i) => (
+              <ExperienceItem key={i} {...exp} />
+            ))}
+          </Box>
         </Container>
       </Box>
 
@@ -411,22 +429,16 @@ export default function Home() {
             >
               Email me
             </Button>
-            <IconButton
-              color="primary"
+            <SocialButton
+              icon={<GitHub />}
               href="https://github.com/valmores"
-              target="_blank"
-              sx={{ border: '1px solid rgba(255,255,255,0.15)' }}
-            >
-              <GitHub />
-            </IconButton>
-            <IconButton
-              color="primary"
+              variant="circle"
+            />
+            <SocialButton
+              icon={<LinkedIn />}
               href="#"
-              target="_blank"
-              sx={{ border: '1px solid rgba(255,255,255,0.15)' }}
-            >
-              <LinkedIn />
-            </IconButton>
+              variant="circle"
+            />
           </Stack>
         </Container>
       </Box>
