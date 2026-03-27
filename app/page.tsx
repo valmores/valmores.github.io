@@ -123,7 +123,7 @@ const projects: Project[] = [
   {
     title: 'Competent Leaders',
     description: 'A specialized executive recruitment platform that connects higher education institutions with top-tier leadership talent through expert industry consultancy.',
-    tags: ['HTML, CSS, JavaScript, TailwindCSS'],
+    tags: ['HTML', 'CSS', 'JavaScript', 'TailwindCSS'],
     link: 'https://www.competent-leaders.com/',
     image: leader1.src,
     screenshots: [
@@ -136,7 +136,7 @@ const projects: Project[] = [
   {
     title: 'Miltonstark',
     description: 'This project is an impact-driven professional platform centered on energy advocacy and strategic growth.',
-    tags: ['HTML, CSS, JavaScript, TailwindCSS'],
+    tags: ['HTML', 'CSS', 'JavaScript', 'TailwindCSS'],
     link: 'https://www.miltonstark.com/',
     image: milton1.src,
     screenshots: [
