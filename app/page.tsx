@@ -26,8 +26,39 @@ import Grid from '@mui/material/Grid';
 import SampleWorkCard from './components/SampleWorkCard';
 import { useSampleWork } from './store/useSampleWork';
 import SampleWorkModal from './components/modals/SampleWorkModal';
+import ResumeModal from './components/modals/ResumeModal';
 import SocialButton from './components/SocialButton';
+
 import ExperienceItem from './components/ExperienceItem';
+
+// Import screenshots
+import budget1 from '../public/budget_app/Screenshot_20260327_081404.jpg';
+import budget2 from '../public/budget_app/Screenshot_20260327_081414.jpg';
+import budget3 from '../public/budget_app/Screenshot_20260327_081422.jpg';
+import budget4 from '../public/budget_app/Screenshot_20260327_081429.jpg';
+import budget5 from '../public/budget_app/Screenshot_20260327_081442.jpg';
+import budget_icon from '../public/budget_app/app_icon.jpg';
+
+// ISSC Screenshots
+import issc1 from '../public/issc/issc_dashboard.png';
+import issc2 from '../public/issc/committee_meetings_page.png';
+import issc3 from '../public/issc/committee_members_page.png';
+import issc4 from '../public/issc/document_repository_page.png';
+import issc5 from '../public/issc/add_meeting_page.png';
+import issc6 from '../public/issc/view_document_modal.png';
+
+// Competent Leaders Screenshots
+import leader1 from '../public/competent_leaders/home.png';
+import leader2 from '../public/competent_leaders/about_us.png';
+import leader3 from '../public/competent_leaders/approach.png';
+import leader4 from '../public/competent_leaders/services.png';
+
+// Miltonstark Screenshots
+import milton1 from '../public/miltonstark/miltonstark.png';
+
+
+
+
 /* ───────────────────── DATA ───────────────────── */
 
 interface NavLink {
@@ -39,8 +70,9 @@ interface Project {
   title: string;
   description: string;
   tags: string[];
-  link: string;
+  link?: string;
   image: string | null;
+  screenshots: string[];
 }
 
 interface Experience {
@@ -60,18 +92,56 @@ const navLinks: NavLink[] = [
 
 const projects: Project[] = [
   {
-    title: 'CyTech Module',
-    description: 'A brief description of what this project does and the technologies used.',
-    tags: ['Python Ninja', 'Next.js', 'MUI', 'Postgres'],
-    link: '#',
-    image: null,
+    title: 'ISSC',
+    description: 'An Information System for Committees that streamlines meeting management, member tracking, and document handling.',
+    tags: ['Python', 'Next.js', 'MUI', 'Postgres'],
+    link: 'cytechint.io',
+    image: issc1.src,
+    screenshots: [
+      issc1.src,
+      issc2.src,
+      issc3.src,
+      issc4.src,
+      issc5.src,
+      issc6.src
+    ],
   },
   {
-    title: 'Budget Android',
-    description: 'A brief description of what this project does and the technologies used.',
+    title: 'Android Budget App',
+    description: 'Manage your finances with a top-down "Envelope" system that lets you allocate your income into custom sub-budgets and track your remaining balance in real-time.',
     tags: ['Flutter', 'Firebase'],
-    link: '#',
-    image: null,
+    // link: '#',
+    image: budget_icon.src,
+    screenshots: [
+      budget1.src,
+      budget2.src,
+      budget3.src,
+      budget4.src,
+      budget5.src
+    ],
+  },
+  {
+    title: 'Competent Leaders',
+    description: 'A professional platform for leadership development and consultancy services, showcasing their approach and services.',
+    tags: ['React', 'Next.js', 'MUI', 'Vite'],
+    link: 'https://www.competent-leaders.com/',
+    image: leader1.src,
+    screenshots: [
+      leader1.src,
+      leader2.src,
+      leader3.src,
+      leader4.src
+    ],
+  },
+  {
+    title: 'Miltonstark',
+    description: 'A dedicated platform for insurance and wealth management, offering comprehensive financial solutions and expert guidance.',
+    tags: ['React', 'Next.js', 'MUI', 'Vercel'],
+    link: 'https://www.miltonstark.com/',
+    image: milton1.src,
+    screenshots: [
+      milton1.src
+    ],
   }
 ];
 
@@ -89,6 +159,18 @@ const experiences: Experience[] = [
     ],
     skills: ['React', 'Next.js', 'Python', 'TypeScript', 'TailwindCSS', 'MongoDB', 'Postgres', 'MUI', 'AWS'],
   },
+  {
+    company: 'Freelance',
+    role: 'Full-Stack Developer',
+    period: '2020 - 2023',
+    description: [
+      'Designing and developing high-performance web applications using modern frameworks like React and Next.js.',
+      'Building scalable backend services and APIs with Python and cloud-native technologies.',
+      'Focused on delivering exceptional user experiences through intuitive design and performance optimization.',
+      'Continuous learning and experimentation with emerging technologies to stay at the forefront of web development.',
+    ],
+    skills: ['React', 'Next.js', 'Python', 'TypeScript', 'TailwindCSS', 'MongoDB', 'Postgres', 'MUI', 'AWS'],
+  }
 ];
 
 /* ───────────────────── ANIMATIONS ───────────────────── */
@@ -106,7 +188,7 @@ const spinReverse = keyframes`
 /* ───────────────────── PAGE ───────────────────── */
 
 export default function Home() {
-  const { open, setOpen } = useSampleWork();
+  const { setResumeOpen } = useSampleWork();
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -312,6 +394,7 @@ export default function Home() {
                   variant="contained"
                   color="primary"
                   size="large"
+                  onClick={() => setResumeOpen(true)}
                   sx={{
                     px: 5,
                     py: 1.8,
@@ -324,9 +407,8 @@ export default function Home() {
 
                 <Stack direction="row" spacing={2}>
                   {[
-                    { icon: <LinkedIn />, href: '#' },
+                    { icon: <LinkedIn />, href: 'https://www.linkedin.com/in/john-eric-valmores-393a63127/' },
                     { icon: <GitHub />, href: 'https://github.com/valmores' },
-                    { icon: <Twitter />, href: '#' },
                   ].map((social, i) => (
                     <SocialButton
                       key={i}
@@ -456,6 +538,7 @@ export default function Home() {
         </Typography>
       </Box>
       <SampleWorkModal />
+      <ResumeModal />
     </Box>
   );
 }

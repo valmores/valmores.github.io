@@ -4,8 +4,9 @@ interface Project {
     title: string;
     description: string;
     tags: string[];
-    link: string;
+    link?: string;
     image: string | null;
+    screenshots: string[];
 }
 
 interface SampleWorkState {
@@ -13,6 +14,8 @@ interface SampleWorkState {
     setOpen: (open: boolean) => void;
     project: Project | null;
     setProject: (project: Project | null) => void;
+    resumeOpen: boolean;
+    setResumeOpen: (open: boolean) => void;
 }
 
 export const useSampleWork = create<SampleWorkState>((set) => ({
@@ -20,4 +23,6 @@ export const useSampleWork = create<SampleWorkState>((set) => ({
     setOpen: (open) => set({ open }),
     project: null,
     setProject: (project) => set({ project }),
+    resumeOpen: false,
+    setResumeOpen: (open) => set({ resumeOpen: open }),
 }));

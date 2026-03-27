@@ -16,14 +16,20 @@ const Transition = React.forwardRef(function Transition(
 export default function SampleWorkModal() {
     const { open, setOpen, project } = useSampleWork();
     const [activeStep, setActiveStep] = React.useState(0);
-    const maxSteps = 3;
+    const maxSteps = project?.screenshots?.length || 0;
+
+    React.useEffect(() => {
+        if (open) {
+            setActiveStep(0);
+        }
+    }, [open, project]);
 
     if (!project) return null;
 
     const handleNext = () => {
         if (activeStep < maxSteps - 1) {
             setActiveStep((prevActiveStep) => prevActiveStep + 1);
-        } else {
+        } else if (project.link && project.link !== '#') {
             window.open(project.link, '_blank');
         }
     };
@@ -65,23 +71,56 @@ export default function SampleWorkModal() {
             </DialogContentText>
 
             <DialogContent>
-                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
                     <Box
                         sx={{
-                            p: 2,
                             width: '100%',
-                            height: 400,
+                            height: { xs: 300, md: 500 },
                             bgcolor: 'rgba(255,255,255,0.03)',
                             border: '1px solid rgba(255,255,255,0.06)',
-                            borderRadius: 0.5
+                            borderRadius: 2,
+                            overflow: 'hidden',
+                            position: 'relative',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'
                         }}
                     >
-                        <Typography variant="h6" sx={{ color: 'primary.main', mb: 1 }}>
-                            Step {activeStep + 1}
-                        </Typography>
-                        <Typography variant="body2" sx={{ color: 'text.secondary', fontStyle: 'italic' }}>
-                            {project.title} Screenshot Placeholder
-                        </Typography>
+                        {project.screenshots && project.screenshots.length > 0 ? (
+                            <Box
+                                component="img"
+                                src={project.screenshots[activeStep]}
+                                alt={`${project.title} screenshot ${activeStep + 1}`}
+                                sx={{
+                                    width: '100%',
+                                    height: '100%',
+                                    objectFit: 'contain',
+                                    transition: 'opacity 0.3s ease-in-out'
+                                }}
+                            />
+                        ) : (
+                            <Typography variant="body2" sx={{ color: 'text.secondary', fontStyle: 'italic' }}>
+                                No screenshots available
+                            </Typography>
+                        )}
+                        
+                        <Box
+                            sx={{
+                                position: 'absolute',
+                                top: 16,
+                                left: 16,
+                                bgcolor: 'rgba(0,0,0,0.6)',
+                                backdropFilter: 'blur(4px)',
+                                px: 1.5,
+                                py: 0.5,
+                                borderRadius: 1,
+                                border: '1px solid rgba(255,255,255,0.1)'
+                            }}
+                        >
+                            <Typography variant="caption" sx={{ color: 'primary.main', fontWeight: 600 }}>
+                                STEP {activeStep + 1} OF {maxSteps}
+                            </Typography>
+                        </Box>
                     </Box>
                     <MobileStepper
                         variant="dots"
@@ -140,17 +179,17 @@ export default function SampleWorkModal() {
 
                 <Button
                     variant="contained"
-                    disabled={activeStep === maxSteps - 1}
                     onClick={handleNext}
-                    endIcon={<KeyboardArrowRight />}
+                    endIcon={activeStep === maxSteps - 1 ? <ArrowOutward /> : <KeyboardArrowRight />}
                     sx={{
                         px: 4,
                         py: 1,
                         borderRadius: 2,
-                        boxShadow: '0 4px 14px 0 rgba(168, 85, 247, 0.39)'
+                        boxShadow: '0 4px 14px 0 rgba(168, 85, 247, 0.39)',
+                        display: (activeStep === maxSteps - 1 && (!project.link || project.link === '#')) ? 'none' : 'flex'
                     }}
                 >
-                    Next
+                    {activeStep === maxSteps - 1 ? 'View Project' : 'Next'}
                 </Button>
             </DialogActions>
         </Dialog>

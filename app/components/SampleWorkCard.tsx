@@ -1,4 +1,4 @@
-import { Box, Grid, Stack, Typography, Link as MuiLink } from '@mui/material'
+import { Box, Grid, Stack, Typography, Link as MuiLink, IconButton } from '@mui/material'
 import { ArrowOutward } from '@mui/icons-material'
 import React from 'react'
 import { useSampleWork } from '../store/useSampleWork'
@@ -39,17 +39,54 @@ export default function SampleWorkCard({ project }: { project: any }) {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
+                        overflow: 'hidden',
+                        borderRadius: 1,
+                        border: '1px solid rgba(255,255,255,0.06)'
                     }}
                 >
-                    <Typography variant="body2" sx={{ color: 'text.secondary', fontStyle: 'italic' }}>
-                        screenshot placeholder
-                    </Typography>
+                    {project.image ? (
+                        <Box
+                            component="img"
+                            src={project.image}
+                            alt={project.title}
+                            sx={{
+                                width: '100%',
+                                height: '100%',
+                                objectFit: 'cover'
+                            }}
+                        />
+                    ) : (
+                        <Typography variant="body2" sx={{ color: 'text.secondary', fontStyle: 'italic' }}>
+                            screenshot placeholder
+                        </Typography>
+                    )}
                 </Box>
 
-                <Box>
-                    <Typography variant="h3" sx={{ mb: 1.5 }}>
-                        {project.title}
-                    </Typography>
+                <Box sx={{ flexGrow: 1 }}>
+                    <Stack direction="row" justifyContent="space-between" alignItems="flex-start" sx={{ mb: 1.5 }}>
+                        <Typography variant="h3">
+                            {project.title}
+                        </Typography>
+                        {project.link && project.link !== '#' && (
+                            <IconButton
+                                size="small"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    window.open(project.link, '_blank');
+                                }}
+                                sx={{
+                                    color: 'primary.main',
+                                    border: '1px solid rgba(168, 85, 247, 0.2)',
+                                    '&:hover': {
+                                        bgcolor: 'rgba(168, 85, 247, 0.1)',
+                                        border: '1px solid rgba(168, 85, 247, 0.5)',
+                                    }
+                                }}
+                            >
+                                <ArrowOutward sx={{ fontSize: 18 }} />
+                            </IconButton>
+                        )}
+                    </Stack>
                     <Typography variant="body2" sx={{ color: 'text.secondary', mb: 2.5 }}>
                         {project.description}
                     </Typography>
