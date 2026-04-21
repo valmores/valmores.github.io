@@ -563,7 +563,7 @@ export default function Home() {
       <Divider sx={{ mx: 'auto', maxWidth: 'lg' }} />
 
       {/* ── Available for Hire Banner ── */}
-      <Box
+      {/* <Box
         sx={{
           py: 2.5,
           background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.08) 0%, rgba(168, 85, 247, 0.02) 50%, rgba(168, 85, 247, 0.08) 100%)',
@@ -596,7 +596,7 @@ export default function Home() {
             </Typography>
           </Stack>
         </Container>
-      </Box>
+      </Box> */}
 
       {/* ── Work Section ── */}
       <Box id="work" sx={{ py: { xs: 10, md: 14 } }}>
