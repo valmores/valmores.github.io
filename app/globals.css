@@ -17,12 +17,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Selection color — matches purple brand */
 ::selection {
-  background: rgba(255,255,255,0.15);
+  background: rgba(168, 85, 247, 0.3);
   color: #fff;
 }
 
-/* Fade-in animation */
+/* Fade-in animation (hero initial load) */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -36,3 +37,36 @@ body {
 .fade-up-delay-2 { animation-delay: 0.3s; }
 .fade-up-delay-3 { animation-delay: 0.45s; }
 .fade-up-delay-4 { animation-delay: 0.6s; }
+
+/* Scroll-triggered reveal animation */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Card-level scroll reveal */
+.scroll-reveal-card {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: cardReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cardReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stagger card animations */
+.scroll-reveal-card:nth-child(1) { animation-delay: 0.1s; }
+.scroll-reveal-card:nth-child(2) { animation-delay: 0.2s; }
+.scroll-reveal-card:nth-child(3) { animation-delay: 0.3s; }
+.scroll-reveal-card:nth-child(4) { animation-delay: 0.4s; }

@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import {
   Box,
   Container,
@@ -21,6 +21,11 @@ import {
   LinkedIn,
   ArrowOutward,
   Twitter,
+  KeyboardArrowUp,
+  Code,
+  Storage,
+  Cloud,
+  Devices,
 } from '@mui/icons-material';
 import Grid from '@mui/material/Grid';
 import SampleWorkCard from './components/SampleWorkCard';
@@ -192,10 +197,10 @@ const experiences: Experience[] = [
     role: 'Full-Stack Developer',
     period: 'March 2025 - April 2026',
     description: [
-      'Designing and developing high-performance web applications using modern frameworks like React and Next.js.',
-      'Building scalable backend services and APIs with Python and cloud-native technologies.',
-      'Focused on delivering exceptional user experiences through intuitive design and performance optimization.',
-      'Continuous learning and experimentation with emerging technologies to stay at the forefront of web development.',
+      'Built a committee management platform (ISSC) that digitized meeting workflows and document handling for 50+ members across each different clients.',
+      'Architected scalable REST APIs using Django Ninja and Implemented Celery for background email tasks.',
+      'Reduced page load times by ~40% through code splitting, lazy loading, and image optimization using Next.js best practices.',
+      'Developed a scalable, real-time ETL pipeline for network telemetry, enabling efficient ingestion, transformation, and storage of scan data using Apache Kafka, MongoDB, and PostgreSQL',
     ],
     skills: ['React', 'Next.js', 'Python', 'TypeScript', 'TailwindCSS', 'MongoDB', 'Postgres', 'MUI', 'AWS', 'Docker'],
   },
@@ -224,6 +229,63 @@ const spinReverse = keyframes`
   from { transform: rotate(0deg); }
   to { transform: rotate(-360deg); }
 `;
+
+const pulse = keyframes`
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+`;
+
+/* ───────────── SCROLL ANIMATION HOOK ───────────── */
+
+function useScrollReveal() {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    observer.observe(node);
+    return () => {
+      observer.unobserve(node);
+    };
+  }, []);
+
+  return ref;
+}
+
+function ScrollReveal({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
+  const ref = useScrollReveal();
+  return (
+    <Box
+      ref={ref}
+      className="scroll-reveal"
+      sx={{ transitionDelay: `${delay}s` }}
+    >
+      {children}
+    </Box>
+  );
+}
+
+/* ───────────────────── SKILL ITEMS ───────────────────── */
+
+const skillAreas = [
+  { icon: <Code sx={{ fontSize: 28 }} />, label: 'Frontend', items: 'React, Next.js, TypeScript, MUI, TailwindCSS' },
+  { icon: <Storage sx={{ fontSize: 28 }} />, label: 'Backend', items: 'Python, Django Rest Framework, Django Ninja, REST APIs, MongoDB, Postgres,Kafka, Redis, Celery' },
+  { icon: <Cloud sx={{ fontSize: 28 }} />, label: 'Cloud & DevOps', items: 'AWS, Docker' },
+  { icon: <Devices sx={{ fontSize: 28 }} />, label: 'Mobile', items: 'Flutter, Firebase, Cross-platform' },
+];
 
 /* ───────────────────── PAGE ───────────────────── */
 
@@ -258,7 +320,7 @@ export default function Home() {
             >
               JEV
             </Typography>
-            <Stack direction="row" spacing={3} sx={{ display: { xs: 'none', sm: 'flex' } }}>
+            <Stack direction="row" spacing={3} alignItems="center" sx={{ display: { xs: 'none', sm: 'flex' } }}>
               {navLinks.map((l) => (
                 <MuiLink
                   key={l.label}
@@ -280,6 +342,20 @@ export default function Home() {
                   {l.label}
                 </MuiLink>
               ))}
+              <Button
+                variant="contained"
+                size="small"
+                onClick={() => scrollToSection('contact')}
+                sx={{
+                  px: 2.5,
+                  py: 0.8,
+                  fontSize: '0.78rem',
+                  borderRadius: '50px',
+                  boxShadow: '0 4px 12px rgba(168, 85, 247, 0.25)',
+                }}
+              >
+                Get in Touch
+              </Button>
             </Stack>
           </Toolbar>
         </Container>
@@ -427,7 +503,7 @@ export default function Home() {
                   lineHeight: 1.7
                 }}
               >
-                A <Box component="span" sx={{ color: 'primary.main', fontWeight: 600 }}>Full-Stack Web Developer</Box> passionate about creating interactive applications and experiences on the web.
+                I build <Box component="span" sx={{ color: 'primary.main', fontWeight: 600 }}>fast, scalable web applications</Box> that help businesses grow. From concept to deployment — full-stack, start to finish.
               </Typography>
 
               <Stack direction="row" spacing={3} alignItems="center" className="fade-up fade-up-delay-3">
@@ -444,6 +520,25 @@ export default function Home() {
                   }}
                 >
                   Resumé
+                </Button>
+
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  size="large"
+                  onClick={() => scrollToSection('contact')}
+                  sx={{
+                    px: 4,
+                    py: 1.7,
+                    fontSize: '1rem',
+                    borderWidth: 2,
+                    '&:hover': {
+                      borderWidth: 2,
+                      bgcolor: 'rgba(168, 85, 247, 0.08)',
+                    },
+                  }}
+                >
+                  Let&apos;s Talk
                 </Button>
 
                 <Stack direction="row" spacing={2}>
@@ -467,12 +562,50 @@ export default function Home() {
 
       <Divider sx={{ mx: 'auto', maxWidth: 'lg' }} />
 
+      {/* ── Available for Hire Banner ── */}
+      <Box
+        sx={{
+          py: 2.5,
+          background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.08) 0%, rgba(168, 85, 247, 0.02) 50%, rgba(168, 85, 247, 0.08) 100%)',
+          borderBottom: '1px solid rgba(168, 85, 247, 0.15)',
+          borderTop: '1px solid rgba(168, 85, 247, 0.15)',
+        }}
+      >
+        <Container maxWidth="lg">
+          <Stack direction="row" alignItems="center" justifyContent="center" spacing={2}>
+            <Box
+              sx={{
+                width: 8,
+                height: 8,
+                borderRadius: '50%',
+                bgcolor: '#22c55e',
+                boxShadow: '0 0 8px rgba(34, 197, 94, 0.6)',
+                animation: `${pulse} 2s ease-in-out infinite`,
+              }}
+            />
+            <Typography
+              variant="body2"
+              sx={{
+                color: 'text.secondary',
+                fontSize: '0.85rem',
+                letterSpacing: '0.04em',
+              }}
+            >
+              <Box component="span" sx={{ color: 'text.primary', fontWeight: 600 }}>Open to new projects</Box>
+              {' — Currently available for freelance & contract work.'}
+            </Typography>
+          </Stack>
+        </Container>
+      </Box>
+
       {/* ── Work Section ── */}
       <Box id="work" sx={{ py: { xs: 10, md: 14 } }}>
         <Container maxWidth="lg">
-          <Typography variant="h2" sx={{ mb: 8 }}>
-            Things I&apos;ve Built
-          </Typography>
+          <ScrollReveal>
+            <Typography variant="h2" sx={{ mb: 8 }}>
+              Things I&apos;ve Built
+            </Typography>
+          </ScrollReveal>
           {/* ---------Work Card-------------- */}
           <Grid container spacing={4}>
             {projects.map((project, i) => (
@@ -487,15 +620,19 @@ export default function Home() {
       {/* ── Experience Section ── */}
       <Box id="experience" sx={{ py: { xs: 10, md: 14 } }}>
         <Container maxWidth="md">
-          <Typography variant="h6" sx={{ color: 'text.secondary', mb: 1 }}>
-            Career Journey
-          </Typography>
-          <Typography variant="h2" sx={{ mb: 8 }}>
-            Work Experience
-          </Typography>
+          <ScrollReveal>
+            <Typography variant="h6" sx={{ color: 'text.secondary', mb: 1 }}>
+              Career Journey
+            </Typography>
+            <Typography variant="h2" sx={{ mb: 8 }}>
+              Work Experience
+            </Typography>
+          </ScrollReveal>
           <Box sx={{ mt: 5 }}>
             {experiences.map((exp, i) => (
-              <ExperienceItem key={i} {...exp} />
+              <ScrollReveal key={i} delay={i * 0.15}>
+                <ExperienceItem {...exp} />
+              </ScrollReveal>
             ))}
           </Box>
         </Container>
@@ -506,21 +643,62 @@ export default function Home() {
       {/* ── About ── */}
       <Box id="about" sx={{ py: { xs: 10, md: 14 } }}>
         <Container maxWidth="md">
-          <Typography variant="h6" sx={{ color: 'text.secondary', mb: 1 }}>
-            About
-          </Typography>
-          <Typography variant="h2" sx={{ mb: 4 }}>
-            A little about me
-          </Typography>
-          <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3 }}>
-            I&apos;m a Computer Engineering graduate from Mindanao University of Science
-            and Technology (2016). I enjoy building things for the web and continuously
-            learning new technologies.
-          </Typography>
-          <Typography variant="body1" sx={{ color: 'text.secondary' }}>
-            When I&apos;m not coding, you can find me exploring new tools, contributing to
-            open-source projects, or working on personal experiments.
-          </Typography>
+          <ScrollReveal>
+            <Typography variant="h6" sx={{ color: 'text.secondary', mb: 1 }}>
+              About
+            </Typography>
+            <Typography variant="h2" sx={{ mb: 4 }}>
+              A little about me
+            </Typography>
+          </ScrollReveal>
+          <ScrollReveal delay={0.1}>
+            <Typography variant="body1" sx={{ color: 'text.secondary', mb: 2, lineHeight: 1.8 }}>
+              I&apos;m a Computer Engineering graduate from Mindanao University of Science
+              and Technology (2016) who specializes in <Box component="span" sx={{ color: 'text.primary', fontWeight: 500 }}>taking products from zero to production</Box>. I&apos;ve shipped 4+ projects in the past year alone — from internal enterprise tools to client-facing platforms.
+            </Typography>
+            <Typography variant="body1" sx={{ color: 'text.secondary', mb: 5, lineHeight: 1.8 }}>
+              When I&apos;m not coding, you can find me exploring new tools, contributing to
+              open-source projects, or working on personal experiments.
+            </Typography>
+          </ScrollReveal>
+
+          {/* Skills Grid */}
+          <ScrollReveal delay={0.2}>
+            <Typography variant="h6" sx={{ color: 'text.secondary', mb: 3, fontSize: '0.75rem' }}>
+              What I Bring
+            </Typography>
+            <Grid container spacing={2.5}>
+              {skillAreas.map((skill) => (
+                <Grid key={skill.label} size={{ xs: 12, sm: 6 }}>
+                  <Box
+                    sx={{
+                      p: 3,
+                      height: '130px',
+                      borderRadius: 2,
+                      border: '1px solid rgba(255,255,255,0.06)',
+                      bgcolor: 'rgba(255,255,255,0.02)',
+                      transition: 'all 0.3s ease',
+                      '&:hover': {
+                        borderColor: 'rgba(168, 85, 247, 0.3)',
+                        bgcolor: 'rgba(168, 85, 247, 0.04)',
+                        transform: 'translateY(-2px)',
+                      },
+                    }}
+                  >
+                    <Stack direction="row" spacing={2} alignItems="center" sx={{ mb: 1.5 }}>
+                      <Box sx={{ color: 'primary.main' }}>{skill.icon}</Box>
+                      <Typography variant="body1" sx={{ fontWeight: 600 }}>
+                        {skill.label}
+                      </Typography>
+                    </Stack>
+                    <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: '0.85rem' }}>
+                      {skill.items}
+                    </Typography>
+                  </Box>
+                </Grid>
+              ))}
+            </Grid>
+          </ScrollReveal>
         </Container>
       </Box>
 
@@ -529,51 +707,96 @@ export default function Home() {
       {/* ── Contact ── */}
       <Box id="contact" sx={{ py: { xs: 10, md: 14 } }}>
         <Container maxWidth="md">
-          <Typography variant="h6" sx={{ color: 'text.secondary', mb: 1 }}>
-            Contact
-          </Typography>
-          <Typography variant="h2" sx={{ mb: 3 }}>
-            Let&apos;s work together
-          </Typography>
-          <Typography variant="body1" sx={{ color: 'text.secondary', mb: 5, maxWidth: 500 }}>
-            Have a project in mind or just want to say hello?
-            Feel free to reach out.
-          </Typography>
+          <ScrollReveal>
+            <Typography variant="h6" sx={{ color: 'text.secondary', mb: 1 }}>
+              Contact
+            </Typography>
+            <Typography variant="h2" sx={{ mb: 3 }}>
+              Let&apos;s work together
+            </Typography>
+            <Typography variant="body1" sx={{ color: 'text.secondary', mb: 5, maxWidth: 500 }}>
+              Have a project in mind or just want to say hello?
+              Feel free to reach out.
+            </Typography>
+          </ScrollReveal>
 
-          <Stack direction="row" spacing={3}>
-            <Button
-              variant="outlined"
-              color="primary"
-              startIcon={<Email />}
-              href="mailto:johnericvalmores@gmail.com"
-            >
-              Email me
-            </Button>
-            <SocialButton
-              icon={<GitHub />}
-              href="https://github.com/valmores"
-              variant="circle"
-            />
-            <SocialButton
-              icon={<LinkedIn />}
-              href="#"
-              variant="circle"
-            />
-          </Stack>
+          <ScrollReveal delay={0.15}>
+            <Stack direction="row" spacing={3}>
+              <Button
+                variant="outlined"
+                color="primary"
+                startIcon={<Email />}
+                href="mailto:johnericvalmores@gmail.com"
+              >
+                Email me
+              </Button>
+              <SocialButton
+                icon={<GitHub />}
+                href="https://github.com/valmores"
+                variant="circle"
+              />
+              <SocialButton
+                icon={<LinkedIn />}
+                href="https://www.linkedin.com/in/john-eric-valmores-393a63127/"
+                variant="circle"
+              />
+            </Stack>
+          </ScrollReveal>
         </Container>
       </Box>
 
       {/* ── Footer ── */}
       <Box
         sx={{
-          py: 4,
+          py: 5,
           borderTop: '1px solid rgba(255,255,255,0.06)',
-          textAlign: 'center',
         }}
       >
-        <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: '0.75rem', letterSpacing: '0.04em' }}>
-          &copy; {new Date().getFullYear()} John Eric Valmores
-        </Typography>
+        <Container maxWidth="lg">
+          <Stack
+            direction={{ xs: 'column', sm: 'row' }}
+            justifyContent="space-between"
+            alignItems="center"
+            spacing={2}
+          >
+            <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: '0.75rem', letterSpacing: '0.04em' }}>
+              &copy; {new Date().getFullYear()} John Eric Valmores
+            </Typography>
+
+            <Stack direction="row" spacing={2} alignItems="center">
+              <SocialButton
+                icon={<GitHub sx={{ fontSize: 18 }} />}
+                href="https://github.com/valmores"
+                variant="circle"
+                sx={{ width: 36, height: 36 }}
+              />
+              <SocialButton
+                icon={<LinkedIn sx={{ fontSize: 18 }} />}
+                href="https://www.linkedin.com/in/john-eric-valmores-393a63127/"
+                variant="circle"
+                sx={{ width: 36, height: 36 }}
+              />
+              <IconButton
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                size="small"
+                sx={{
+                  width: 36,
+                  height: 36,
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  color: 'text.secondary',
+                  transition: 'all 0.3s',
+                  '&:hover': {
+                    borderColor: 'primary.main',
+                    color: 'primary.main',
+                    bgcolor: 'rgba(168, 85, 247, 0.08)',
+                  },
+                }}
+              >
+                <KeyboardArrowUp sx={{ fontSize: 18 }} />
+              </IconButton>
+            </Stack>
+          </Stack>
+        </Container>
       </Box>
       <SampleWorkModal />
       <ResumeModal />

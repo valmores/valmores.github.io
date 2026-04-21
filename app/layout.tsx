@@ -6,8 +6,8 @@ import theme from './theme';
 import "./globals.css";
 
 export const metadata = {
-  title: "John Eric Valmores | Portfolio",
-  description: "Modern portfolio of John Eric Valmores, Computer Engineer.",
+  title: "John Eric Valmores — Full-Stack Web Developer",
+  description: "Full-stack developer specializing in React, Next.js, Python, and cloud-native applications. Available for freelance and contract work.",
 };
 
 export default function RootLayout({
