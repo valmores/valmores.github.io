@@ -91,10 +91,50 @@ const navLinks: NavLink[] = [
 ];
 
 const projects: Project[] = [
+  // {
+  //   title: 'Assessment Library',
+  //   description: 'A web application that serves as a centralized repository for assessments for the course enrolled by the user.',
+  //   tags: ['Django Rest Framework', 'Next.js', 'MUI', 'Postgres', 'Docker'],
+  //   link: 'cytechint.io',
+  //   image: null,
+  //   screenshots: [
+
+  //   ],
+  // },
+  // {
+  //   title: 'Course Library',
+  //   description: 'A web application that serves as a centralized repository for educational courses, enroll users in courses that are vulnerable in phishing attacks.',
+  //   tags: ['Django Rest Framework', 'Next.js', 'MUI', 'Postgres', 'Docker'],
+  //   link: 'cytechint.io',
+  //   image: null,
+  //   screenshots: [
+
+  //   ],
+  // },
+  // {
+  //   title: 'Phishing Simulation',
+  //   description: 'A web application that simulates phishing attacks to train users to identify and avoid phishing attacks.',
+  //   tags: ['Django Rest Framework', 'Next.js', 'MUI', 'Postgres', 'Docker'],
+  //   link: 'cytechint.io',
+  //   image: null,
+  //   screenshots: [
+
+  //   ],
+  // },
+  // {
+  //   title: 'Information Security Pressure Analysis',
+  //   description: 'A web application that analyzes the pressure of information securit',
+  //   tags: ['Django Rest Framework', 'Next.js', 'MUI', 'Postgres', 'Docker'],
+  //   link: 'cytechint.io',
+  //   image: null,
+  //   screenshots: [
+
+  //   ],
+  // },
   {
     title: 'ISSC',
     description: 'An Information System for Committees that streamlines meeting management, member tracking, and document handling.',
-    tags: ['Python', 'Next.js', 'MUI', 'Postgres'],
+    tags: ['Django Ninja', 'Next.js', 'MUI', 'Postgres', 'Docker', 'AWS'],
     link: 'cytechint.io',
     image: issc1.src,
     screenshots: [
@@ -157,7 +197,7 @@ const experiences: Experience[] = [
       'Focused on delivering exceptional user experiences through intuitive design and performance optimization.',
       'Continuous learning and experimentation with emerging technologies to stay at the forefront of web development.',
     ],
-    skills: ['React', 'Next.js', 'Python', 'TypeScript', 'TailwindCSS', 'MongoDB', 'Postgres', 'MUI', 'AWS'],
+    skills: ['React', 'Next.js', 'Python', 'TypeScript', 'TailwindCSS', 'MongoDB', 'Postgres', 'MUI', 'AWS', 'Docker'],
   },
   {
     company: 'Freelance',
@@ -169,7 +209,7 @@ const experiences: Experience[] = [
       'Focused on delivering exceptional user experiences through intuitive design and performance optimization.',
       'Continuous learning and experimentation with emerging technologies to stay at the forefront of web development.',
     ],
-    skills: ['React', 'Next.js', 'Python', 'TypeScript', 'TailwindCSS', 'MongoDB', 'Postgres', 'MUI', 'AWS'],
+    skills: ['React', 'Python', 'TypeScript', 'TailwindCSS', 'Next.js'],
   }
 ];
 
@@ -216,7 +256,7 @@ export default function Home() {
               variant="body1"
               sx={{ fontWeight: 600, letterSpacing: '0.1em', fontSize: '0.85rem' }}
             >
-              JEV.
+              JEV
             </Typography>
             <Stack direction="row" spacing={3} sx={{ display: { xs: 'none', sm: 'flex' } }}>
               {navLinks.map((l) => (
@@ -319,6 +359,7 @@ export default function Home() {
                     height: '100%',
                     borderRadius: '50%',
                     bgcolor: 'primary.main',
+                    p: 5,
                     opacity: 0.15,
                     zIndex: 1,
                     transition: 'all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)',
@@ -429,9 +470,6 @@ export default function Home() {
       {/* ── Work Section ── */}
       <Box id="work" sx={{ py: { xs: 10, md: 14 } }}>
         <Container maxWidth="lg">
-          <Typography variant="h6" sx={{ color: 'text.secondary', mb: 1 }}>
-            Selected Work
-          </Typography>
           <Typography variant="h2" sx={{ mb: 8 }}>
             Things I&apos;ve Built
           </Typography>
