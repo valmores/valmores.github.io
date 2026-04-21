@@ -1,4 +1,4 @@
-# Sample workflow for building and deploying a Next.js site to GitHub Pages
+# Workflow for building and deploying a Next.js site to GitHub Pages
 name: Deploy Next.js site to Pages
 
 on:
@@ -14,9 +14,6 @@ permissions:
 concurrency:
   group: "pages"
   cancel-in-progress: true
-
-# You can remove the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24 env once updated, 
-# as the new action versions target it natively.
 
 jobs:
   build:
@@ -65,9 +62,7 @@ jobs:
       - name: Debug Output
         run: ls -R
       - name: Upload artifact
-        # UPDATED: v3 to v3.0.1+ (or just v3 if it points to the latest)
-        # Using the specific latest tag usually clears the warning.
-        uses: actions/upload-pages-artifact@v3.0.1 
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
 
@@ -80,5 +75,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        # UPDATED: v4 to v4.0.5+
-        uses: actions/deploy-pages@v4.0.5
+        uses: actions/deploy-pages@v4
