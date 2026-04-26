@@ -187,7 +187,7 @@ const projects: Project[] = [
   {
     title: 'Competent Leaders',
     description: 'A specialized executive recruitment platform that connects higher education institutions with top-tier leadership talent through expert industry consultancy.',
-    tags: ['Next.js', 'CSS', 'JavaScript', 'TailwindCSS'],
+    tags: ['Next.js', 'CSS', 'JavaScript', 'TailwindCSS', 'Python'],
     link: 'https://www.competent-leaders.com/',
     image: leader1.src,
     screenshots: [
@@ -200,7 +200,7 @@ const projects: Project[] = [
   {
     title: 'Miltonstark',
     description: 'This project is an impact-driven professional platform centered on energy advocacy and strategic growth.',
-    tags: ['Next.js', 'CSS', 'JavaScript', 'TailwindCSS'],
+    tags: ['Next.js', 'CSS', 'JavaScript', 'TailwindCSS', 'Python'],
     link: 'https://www.miltonstark.com/',
     image: milton1.src,
     screenshots: [
@@ -218,8 +218,10 @@ const experiences: Experience[] = [
     description: [
       'Built a committee management platform (ISSC) that digitized meeting workflows and document handling for 50+ members across each different clients.',
       'Architected scalable REST APIs using Django Ninja and Implemented Celery for background email tasks.',
+      'Helped design and build a standardized component library—including buttons, tables, etc. elements—that streamlined frontend development workflows. By promoting reusable, modular code, this reduced development time by roughly 35% and improved consistency across projects.',
       'Reduced page load times by ~40% through code splitting, lazy loading, and image optimization using Next.js best practices.',
       'Developed a scalable, real-time ETL pipeline for network telemetry, enabling efficient ingestion, transformation, and storage of scan data using Apache Kafka, MongoDB, and PostgreSQL',
+      'Worked within a microfrontend architecture to build a modular, scalable frontend ecosystem. Contributed to independently deployable features that improved team autonomy, streamlined development workflows, and enabled faster, more flexible updates across the platform.',
     ],
     skills: ['React', 'Next.js', 'Python', 'TypeScript', 'TailwindCSS', 'MongoDB', 'Postgres', 'MUI', 'Zustand', 'Tanstack', 'Docker'],
   },
