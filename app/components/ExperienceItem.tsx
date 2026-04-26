@@ -16,6 +16,7 @@ export default function ExperienceItem({ company, role, period, description, ski
         position: 'relative',
         pl: { xs: 3, md: 5 },
         pb: 8,
+        mt: 4,
         '&:last-child': { pb: 0 },
         '&::before': {
           content: '""',

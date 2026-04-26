@@ -61,6 +61,17 @@ import leader4 from '../public/competent_leaders/services.png';
 // Miltonstark Screenshots
 import milton1 from '../public/miltonstark/miltonstark.png';
 
+// ISPA Screenshots
+import ispa1 from '../public/ispa/ISPA Dashboard.png';
+import ispa2 from '../public/ispa/Pressure Analysis Main.png';
+import ispa3 from '../public/ispa/Risk Appetite Main.png';
+import ispa4 from '../public/ispa/Risk Assessment Main.png';
+import ispa5 from '../public/ispa/Assessment History.png';
+import ispa6 from '../public/ispa/Risk Appetite View Assessment.png';
+import ispa7 from '../public/ispa/Security Pressure Analysis View Assessment.png';
+import ispa8 from '../public/ispa/Security Risk Assessment View Assessment.png';
+import ispa9 from '../public/ispa/Security Risk Take Assessment.png';
+
 
 
 
@@ -98,7 +109,7 @@ const navLinks: NavLink[] = [
 const projects: Project[] = [
   // {
   //   title: 'Assessment Library',
-  //   description: 'A web application that serves as a centralized repository for assessments for the course enrolled by the user.',
+  //   description: 'A centralized assessment platform that evaluates user security awareness and tracks learning progress across cybersecurity training modules.',
   //   tags: ['Django Rest Framework', 'Next.js', 'MUI', 'Postgres', 'Docker'],
   //   link: 'cytechint.io',
   //   image: null,
@@ -108,7 +119,7 @@ const projects: Project[] = [
   // },
   // {
   //   title: 'Course Library',
-  //   description: 'A web application that serves as a centralized repository for educational courses, enroll users in courses that are vulnerable in phishing attacks.',
+  //   description: 'An educational course management system that delivers targeted cybersecurity training, focusing on identifying and mitigating phishing vulnerabilities.',
   //   tags: ['Django Rest Framework', 'Next.js', 'MUI', 'Postgres', 'Docker'],
   //   link: 'cytechint.io',
   //   image: null,
@@ -118,17 +129,7 @@ const projects: Project[] = [
   // },
   // {
   //   title: 'Phishing Simulation',
-  //   description: 'A web application that simulates phishing attacks to train users to identify and avoid phishing attacks.',
-  //   tags: ['Django Rest Framework', 'Next.js', 'MUI', 'Postgres', 'Docker'],
-  //   link: 'cytechint.io',
-  //   image: null,
-  //   screenshots: [
-
-  //   ],
-  // },
-  // {
-  //   title: 'Information Security Pressure Analysis',
-  //   description: 'A web application that analyzes the pressure of information securit',
+  //   description: 'A sophisticated phishing simulation platform that sends realistic phishing emails to users, tracking engagement patterns and identifying vulnerability levels for targeted security training.',
   //   tags: ['Django Rest Framework', 'Next.js', 'MUI', 'Postgres', 'Docker'],
   //   link: 'cytechint.io',
   //   image: null,
@@ -137,8 +138,26 @@ const projects: Project[] = [
   //   ],
   // },
   {
-    title: 'ISSC',
-    description: 'An Information System for Committees that streamlines meeting management, member tracking, and document handling.',
+    title: 'Information Security Pressure Analysis (CyTech Module)',
+    description: 'A comprehensive security vulnerability assessment platform that conducts three critical evaluations to identify and compute organizational security weaknesses, providing actionable insights for risk mitigation.',
+    tags: ['Django Rest Framework', 'Next.js', 'MUI', 'Postgres', 'Docker'],
+    link: 'cytechint.io',
+    image: ispa1.src,
+    screenshots: [
+      ispa1.src,
+      ispa4.src,
+      ispa2.src,
+      ispa3.src,
+      ispa5.src,
+      ispa6.src,
+      ispa7.src,
+      ispa8.src,
+      ispa9.src
+    ],
+  },
+  {
+    title: 'Information Security Steering Committee (CyTech Module)',
+    description: 'A comprehensive committee management platform that enables seamless meeting scheduling, member administration, and document collaboration for organized team workflows.',
     tags: ['Django Ninja', 'Next.js', 'MUI', 'Postgres', 'Docker', 'AWS'],
     link: 'cytechint.io',
     image: issc1.src,
@@ -168,7 +187,7 @@ const projects: Project[] = [
   {
     title: 'Competent Leaders',
     description: 'A specialized executive recruitment platform that connects higher education institutions with top-tier leadership talent through expert industry consultancy.',
-    tags: ['HTML', 'CSS', 'JavaScript', 'TailwindCSS'],
+    tags: ['Next.js', 'CSS', 'JavaScript', 'TailwindCSS'],
     link: 'https://www.competent-leaders.com/',
     image: leader1.src,
     screenshots: [
@@ -181,7 +200,7 @@ const projects: Project[] = [
   {
     title: 'Miltonstark',
     description: 'This project is an impact-driven professional platform centered on energy advocacy and strategic growth.',
-    tags: ['HTML', 'CSS', 'JavaScript', 'TailwindCSS'],
+    tags: ['Next.js', 'CSS', 'JavaScript', 'TailwindCSS'],
     link: 'https://www.miltonstark.com/',
     image: milton1.src,
     screenshots: [
