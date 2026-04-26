@@ -140,7 +140,7 @@ const projects: Project[] = [
   {
     title: 'Information Security Pressure Analysis (CyTech Module)',
     description: 'A comprehensive security vulnerability assessment platform that conducts three critical evaluations to identify and compute organizational security weaknesses, providing actionable insights for risk mitigation.',
-    tags: ['Django Rest Framework', 'Next.js', 'MUI', 'Postgres', 'Docker'],
+    tags: ['Django Rest Framework', 'Next.js', 'MUI', 'Postgres', 'Docker', 'Zustand', 'Tanstack', 'TypeScript'],
     link: 'cytechint.io',
     image: ispa1.src,
     screenshots: [
@@ -158,7 +158,7 @@ const projects: Project[] = [
   {
     title: 'Information Security Steering Committee (CyTech Module)',
     description: 'A comprehensive committee management platform that enables seamless meeting scheduling, member administration, and document collaboration for organized team workflows.',
-    tags: ['Django Ninja', 'Next.js', 'MUI', 'Postgres', 'Docker', 'AWS'],
+    tags: ['Django Ninja', 'Next.js', 'MUI', 'Postgres', 'Docker', 'AWS', 'Zustand', 'Tanstack', 'TypeScript',],
     link: 'cytechint.io',
     image: issc1.src,
     screenshots: [
@@ -221,7 +221,7 @@ const experiences: Experience[] = [
       'Reduced page load times by ~40% through code splitting, lazy loading, and image optimization using Next.js best practices.',
       'Developed a scalable, real-time ETL pipeline for network telemetry, enabling efficient ingestion, transformation, and storage of scan data using Apache Kafka, MongoDB, and PostgreSQL',
     ],
-    skills: ['React', 'Next.js', 'Python', 'TypeScript', 'TailwindCSS', 'MongoDB', 'Postgres', 'MUI', 'AWS', 'Docker'],
+    skills: ['React', 'Next.js', 'Python', 'TypeScript', 'TailwindCSS', 'MongoDB', 'Postgres', 'MUI', 'Zustand', 'Tanstack', 'Docker'],
   },
   {
     company: 'Freelance',
@@ -300,7 +300,7 @@ function ScrollReveal({ children, delay = 0 }: { children: React.ReactNode; dela
 /* ───────────────────── SKILL ITEMS ───────────────────── */
 
 const skillAreas = [
-  { icon: <Code sx={{ fontSize: 28 }} />, label: 'Frontend', items: 'React, Next.js, TypeScript, MUI, TailwindCSS' },
+  { icon: <Code sx={{ fontSize: 28 }} />, label: 'Frontend', items: 'React, Next.js, TypeScript, MUI, TailwindCSS,Tanstack,Zustand' },
   { icon: <Storage sx={{ fontSize: 28 }} />, label: 'Backend', items: 'Python, Django Rest Framework, Django Ninja, REST APIs, MongoDB, Postgres,Kafka, Redis, Celery' },
   { icon: <Cloud sx={{ fontSize: 28 }} />, label: 'Cloud & DevOps', items: 'AWS, Docker' },
   { icon: <Devices sx={{ fontSize: 28 }} />, label: 'Mobile', items: 'Flutter, Firebase, Cross-platform' },
