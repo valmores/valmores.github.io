@@ -110,36 +110,36 @@ const navLinks: NavLink[] = [
 ];
 
 const projects: Project[] = [
-  // {
-  //   title: 'Assessment Library',
-  //   description: 'A centralized assessment platform that evaluates user security awareness and tracks learning progress across cybersecurity training modules.',
-  //   tags: ['Django Rest Framework', 'Next.js', 'MUI', 'Postgres', 'Docker'],
-  //   link: 'cytechint.io',
-  //   image: null,
-  //   screenshots: [
+  {
+    title: 'Assessment Library',
+    description: 'A centralized assessment platform that evaluates user security awareness and tracks learning progress across cybersecurity training modules.',
+    tags: ['Django Rest Framework', 'Next.js', 'MUI', 'Postgres', 'Docker'],
+    link: 'cytechint.io',
+    image: null,
+    screenshots: [
 
-  //   ],
-  // },
-  // {
-  //   title: 'Course Library',
-  //   description: 'An educational course management system that delivers targeted cybersecurity training, focusing on identifying and mitigating phishing vulnerabilities.',
-  //   tags: ['Django Rest Framework', 'Next.js', 'MUI', 'Postgres', 'Docker'],
-  //   link: 'cytechint.io',
-  //   image: null,
-  //   screenshots: [
+    ],
+  },
+  {
+    title: 'Course Library',
+    description: 'An educational course management system that delivers targeted cybersecurity training, focusing on identifying and mitigating phishing vulnerabilities.',
+    tags: ['Django Rest Framework', 'Next.js', 'MUI', 'Postgres', 'Docker'],
+    link: 'cytechint.io',
+    image: null,
+    screenshots: [
 
-  //   ],
-  // },
-  // {
-  //   title: 'Phishing Simulation',
-  //   description: 'A sophisticated phishing simulation platform that sends realistic phishing emails to users, tracking engagement patterns and identifying vulnerability levels for targeted security training.',
-  //   tags: ['Django Rest Framework', 'Next.js', 'MUI', 'Postgres', 'Docker'],
-  //   link: 'cytechint.io',
-  //   image: null,
-  //   screenshots: [
+    ],
+  },
+  {
+    title: 'Phishing Simulation',
+    description: 'A sophisticated phishing simulation platform that sends realistic phishing emails to users, tracking engagement patterns and identifying vulnerability levels for targeted security training.',
+    tags: ['Django Rest Framework', 'Next.js', 'MUI', 'Postgres', 'Docker'],
+    link: 'cytechint.io',
+    image: null,
+    screenshots: [
 
-  //   ],
-  // },
+    ],
+  },
   {
     title: 'Information Security Pressure Analysis (CyTech Module)',
     description: 'A comprehensive security vulnerability assessment platform that conducts three critical evaluations to identify and compute organizational security weaknesses, providing actionable insights for risk mitigation.',
