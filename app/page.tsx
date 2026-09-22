@@ -44,6 +44,9 @@ import budget4 from '../public/budget_app/Screenshot_20260327_081429.jpg';
 import budget5 from '../public/budget_app/Screenshot_20260327_081442.jpg';
 import budget_icon from '../public/budget_app/app_icon.jpg';
 
+//budget App version 2
+import budget_v2 from '../public/budget_app_v2/v2_icon.jpg';
+
 // ISSC Screenshots
 import issc1 from '../public/issc/issc_dashboard.png';
 import issc2 from '../public/issc/committee_meetings_page.png';
@@ -185,26 +188,12 @@ const projects: Project[] = [
     ],
   },
   {
-    title: 'Competent Leaders',
-    description: 'A specialized executive recruitment platform that connects higher education institutions with top-tier leadership talent through expert industry consultancy.',
-    tags: ['Next.js', 'CSS', 'JavaScript', 'TailwindCSS', 'Python'],
-    link: 'https://www.competent-leaders.com/',
-    image: leader1.src,
+    title: 'Android Budget App V2',
+    description: 'Take control of your finances by organizing your income into custom budgets and expense categories, with real-time tracking of your spending and remaining funds.',
+    tags: ['React Native', 'Firebase'],
+    // link: '#',
+    image: budget_v2.src,
     screenshots: [
-      leader1.src,
-      leader2.src,
-      leader3.src,
-      leader4.src
-    ],
-  },
-  {
-    title: 'Miltonstark',
-    description: 'This project is an impact-driven professional platform centered on energy advocacy and strategic growth.',
-    tags: ['Next.js', 'CSS', 'JavaScript', 'TailwindCSS', 'Python'],
-    link: 'https://www.miltonstark.com/',
-    image: milton1.src,
-    screenshots: [
-      milton1.src
     ],
   }
 ];
@@ -224,18 +213,6 @@ const experiences: Experience[] = [
       'Worked within a microfrontend architecture to build a modular, scalable frontend ecosystem. Contributed to independently deployable features that improved team autonomy, streamlined development workflows, and enabled faster, more flexible updates across the platform.',
     ],
     skills: ['React', 'Next.js', 'Python', 'TypeScript', 'TailwindCSS', 'MongoDB', 'Postgres', 'MUI', 'Zustand', 'Tanstack', 'Docker'],
-  },
-  {
-    company: 'Freelance',
-    role: 'Full-Stack Developer',
-    period: '2020 - 2023',
-    description: [
-      'Designing and developing high-performance web applications using modern frameworks like React and Next.js.',
-      'Building scalable backend services and APIs with Python and cloud-native technologies.',
-      'Focused on delivering exceptional user experiences through intuitive design and performance optimization.',
-      'Continuous learning and experimentation with emerging technologies to stay at the forefront of web development.',
-    ],
-    skills: ['React', 'Python', 'TypeScript', 'TailwindCSS', 'Next.js'],
   }
 ];
 
@@ -305,7 +282,7 @@ const skillAreas = [
   { icon: <Code sx={{ fontSize: 28 }} />, label: 'Frontend', items: 'React, Next.js, TypeScript, MUI, TailwindCSS,Tanstack,Zustand' },
   { icon: <Storage sx={{ fontSize: 28 }} />, label: 'Backend', items: 'Python, Django Rest Framework, Django Ninja, REST APIs, MongoDB, Postgres,Kafka, Redis, Celery' },
   { icon: <Cloud sx={{ fontSize: 28 }} />, label: 'Cloud & DevOps', items: 'AWS, Docker' },
-  { icon: <Devices sx={{ fontSize: 28 }} />, label: 'Mobile', items: 'Flutter, Firebase, Cross-platform' },
+  { icon: <Devices sx={{ fontSize: 28 }} />, label: 'Mobile', items: 'Flutter, React Native, Firebase, Cross-platform' },
 ];
 
 /* ───────────────────── PAGE ───────────────────── */
