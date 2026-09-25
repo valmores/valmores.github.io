@@ -16,7 +16,7 @@ const Transition = React.forwardRef(function Transition(
 export default function ResumeModal() {
     const { resumeOpen, setResumeOpen } = useSampleWork();
 
-    const resumePath = '/resume/Fullstack Web Developer 2026.pdf';
+    const resumePath = '/resume/John Eric Valmores.pdf';
 
     const handleDownload = () => {
         window.open(resumePath, '_blank');
@@ -30,7 +30,7 @@ export default function ResumeModal() {
             maxWidth="lg"
             fullWidth
             PaperProps={{
-                sx: { 
+                sx: {
                     borderRadius: 2,
                     bgcolor: 'background.paper',
                     backgroundImage: 'none',
